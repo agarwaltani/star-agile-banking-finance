@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tanisha-deploy
+  labels:
+    app: tanisha-banking-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tanisha-banking-app
+  template:
+    metadata:
+      labels:
+        app: tanisha-banking-app
+    spec:
+      containers:
+      - name: tanisha-banking-container
+        image: agarwaltani/tanishabankimage:latest
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tanisha-np-service
+  labels:
+    app: tanisha-banking-app
+spec:
+  selector:
+    app: tanisha-banking-app
+
+  type: NodePort
+  ports:
+  - nodePort: 33000
+    port: 8080
+    targetPort: 8080
