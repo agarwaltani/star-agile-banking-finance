@@ -1,0 +1,27 @@
+---
+- name: Copy and deploy Kubernetes application
+  hosts: samplenode1
+  become: true
+
+  vars:
+    local_deployment_file: /home/devopsadmin/workspace/staragile-banking-app-kubedeploy-pipeline/k8banking.yaml
+    remote_deployment_file: /home/devopsadmin
+
+  tasks:
+    - name: Copy deployment file to remote server
+      copy:
+        src: "{{ local_deployment_file }}"
+        dest: "{{ remote_deployment_file }}"
+      register: copy_result
+
+    - name: Check if deployment file copied successfully
+      debug:
+        var: copy_result
+
+    - name: Apply the deployment on remote server
+      command: "kubectl apply -f /home/devopsadmin/workspace/staragile-banking-app-kubedeploy-pipeline/k8banking.yaml"
+      register: deployment_result
+
+    - name: Check if deployment applied successfully
+      debug:
+        var: deployment_result
