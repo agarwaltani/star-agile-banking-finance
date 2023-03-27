@@ -19,7 +19,7 @@
         var: copy_result
 
     - name: Apply the deployment on remote server
-      command: "kubectl apply -f /home/devopsadmin/workspace/staragile-banking-app-kubedeploy-pipeline/k8banking.yaml"
+      command: "kubectl apply -f /home/devopsadmin/k8banking.yaml"
       register: deployment_result
 
     - name: Check if deployment applied successfully
