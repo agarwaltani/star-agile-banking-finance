@@ -1,10 +1,10 @@
 ---
 - name: Copy and deploy Kubernetes application
-  hosts: samplenode1
+  hosts: samplenode2
   become: true
 
   vars:
-    local_deployment_file: /home/devopsadmin/workspace/banking-new-pipline/ansible-playbook-banking.yaml
+    local_deployment_file: /etc/ansible/k8banking.yaml
     remote_deployment_file: /home/devopsadmin
 
   tasks:
