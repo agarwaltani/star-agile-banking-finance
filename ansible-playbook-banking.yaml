@@ -4,7 +4,7 @@
   become: true
 
   vars:
-    local_deployment_file: /home/devopsadmin/workspace/staragile-banking-app-kubedeploy-pipeline/k8banking.yaml
+    local_deployment_file: /home/devopsadmin/workspace/banking-new-pipline/ansible-playbook-banking.yaml
     remote_deployment_file: /home/devopsadmin
 
   tasks:
